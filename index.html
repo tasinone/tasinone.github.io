@@ -1,58 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website Title</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASIN</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     body {
-      background: url('bg/bg-pic.jpg') center center fixed;
-      background-size: cover;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        font-family: 'Orbitron', sans-serif;
+        background-color: #1e1e1e; /* Dark mode body color */
+        color: #f8f8ff; /* Changed from white */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background-color 0.3s, color 0.3s;
     }
-    .blur-bg {
-      background-color: rgba(0, 0, 0, 0.6);
-      color: white;
-      backdrop-filter: blur(10px);
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      padding: 120px 100px;
+    body.light {
+        background-color: #f8f8ff; /* Light mode background */
+        color: #242424; /* Light mode text color */
     }
-    .name {
-      font-size: 6rem;
-      font-weight: bold;
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        position: relative;
     }
-    .website {
-      font-size: 18px;
-      margin-bottom: 20px;
+    header.light {
+        background: #f8f8ff; /* Light mode header background */
+    }
+    .menu-toggle,
+    .dark-mode-toggle {
+        color: #f8f8ff; /* Changed from white */
+    }
+    body.light .menu-toggle,
+    body.light .dark-mode-toggle {
+        color: #242424; /* Change color to dark gray in light mode */
+    }
+    .title {
+        font-size: 25px;
+        font-weight: 600;
+    }
+    .menu-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    nav {
+        display: flex;
+        gap: 1.5rem;
+    }
+    nav a {
+        color: #f8f8ff; /* Changed from white */
+        text-decoration: none;
+        font-weight: 500;
+    }
+    body.light nav a,
+    body.light .social-icons a,
+    body.light .dark-mode-toggle {
+        color: #242424; /* Link color in light mode */
+    }
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+    .dark-mode-toggle {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+    }
+    .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem 1rem;
+        text-align: center;
+    }
+    .hero img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
     }
     .social-icons {
-      display: flex;
-      justify-content: center;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
     }
-    .social-icons img {
-      width: 30px;
-      height: 30px;
-      margin: 5px;
+    .social-icons a {
+        color: #f8f8ff; /* Changed from white */
+        font-size: 1.5rem;
+        transition: transform 0.2s;
     }
-  </style>
+    body.light .social-icons a {
+        color: #242424; /* Social icon color in light mode */
+    }
+    .social-icons a:hover {
+        color: #00aced;
+        transform: scale(1.2);
+    }
+    section {
+        padding: 3rem 2rem;
+        max-width: 800px;
+        margin: auto;
+    }
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid #444;
+        padding-bottom: 0.5rem;
+    }
+    .blog-posts article {
+        margin-bottom: 2rem;
+        border-left: 3px solid #00aced;
+        padding-left: 1rem;
+    }
+    footer {
+        text-align: center;
+        padding: 1rem;
+    }
+    footer.light {
+        background: #f8f8ff; /* Light mode footer background */
+    }
+    @media (max-width: 768px) {
+        nav {
+            display: none;
+            flex-direction: column;
+            background: #1e1e1e; /* Dark mode background for the menu */
+            position: absolute;
+            border-top: 0.1px solid;
+            top: 60px;
+            left: 0rem;
+            width: 100%;
+            padding: 1rem;
+            align-items: center;
+        }
+        body.light nav {
+            background: #f8f8ff; /* Light mode background for the menu */
+        }
+        nav.active {
+            display: flex;
+        }
+        .menu-toggle {
+            display: block;
+        }
+        .menu-container {
+            flex-direction: row;
+        }
+        .dark-mode-toggle {
+            order: 2;
+        }
+        .menu-toggle {
+            order: 1;
+        }
+    }
+</style>
 </head>
 <body>
-  <div class="blur-bg">
-    <div class="name">RH TASIN</div>
-    <div class="website">www.websiregergergte.com</div>
-    <div class="social-icons">
-      <img src="path/to/social_icon_1.png" alt="Social Icon 1">
-      <img src="path/to/social_icon_2.png" alt="Social Icon 2">
-      <img src="path/to/social_icon_3.png" alt="Social Icon 3">
-    </div>
-  </div>
+    <header>
+        <!-- <div class='title'>TASIN</div> -->
+        <img src="https://i.ibb.co/KCzRJzX/tasin-logo.png">
+        <div class='menu-container'>
+            <button class='menu-toggle' onclick='toggleMenu()'><i class='fas fa-bars'></i></button>
+            <nav id='navbar'>
+                <a href='#about'>About</a>
+                <a href='#blog'>Blog</a>
+                <a href='#contact'>Contact</a>
+            </nav>
+            <button class='dark-mode-toggle' onclick='toggleDarkMode()'><i class='fas fa-moon'></i></button>
+        </div>
+    </header>
+
+    <main class='hero'>
+        <img alt='Profile' src='https://i.ibb.co/Zk5fCzK/dp.webp'/>
+        <h1>TASIN</h1>
+        <p>Vibe Coder</p>
+        <div class='social-icons'>
+            <a href='https://urly.rf.gd/Q8EE9'><i class='fab fa-facebook'></i></a>
+            <a href='https://urly.rf.gd/Xc2zP'><i class='fab fa-mastodon'></i></a>
+            <a href='https://urly.rf.gd/vWUxF'><i class='fab fa-bluesky'></i></a>
+            <a href='https://urly.rf.gd/R489s'><i class='fab fa-github'></i></a>
+            <a href='https://urly.rf.gd/WjwBl'><i class='fab fa-youtube'></i></a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&#169; 2025 | TASIN</p>
+    </footer>
+
+    <script type='text/javascript'>
+        // Function to toggle the menu
+        function toggleMenu() {
+            var nav = document.getElementById('navbar');
+            nav.classList.toggle('active');
+        }
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('light');
+            document.querySelector('header').classList.toggle('light'); // Toggle header background
+            document.querySelector('footer').classList.toggle('light'); // Toggle footer background
+
+            // Save the theme preference in localStorage
+            if (document.body.classList.contains('light')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load the theme preference on page load
+        window.onload = function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                document.body.classList.add('light');
+                document.querySelector('header').classList.add('light');
+                document.querySelector('footer').classList.add('light');
+            }
+        }
+    </script>
 </body>
 </html>
